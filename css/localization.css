@@ -1,0 +1,92 @@
+.body {
+	font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+	background-color: white;
+}
+
+.localizationContainer {
+	padding: 0;
+	margin: 0;
+	height: calc(100% - 90px);
+	width: 100%;
+    position: absolute;
+}
+
+.localizationContent {
+	margin: 140px 0;
+}
+
+.selectLocalizationText {
+	width: 50%;
+	text-align: center;
+	height: 100px;
+	line-height: 100px;
+	margin: 0 auto;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+.selectLocalizationMenu {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.localizationMenuItem {
+	height: 80px;
+	line-height: 80px;
+	width: calc(100% - 40px);
+	padding: 10px;
+	font-size: 40px;
+	font-weight: bold;
+	background-color: #eeeeee;
+	border-radius: 30px;
+	margin: 20px 0;
+	padding-left: 40px;
+}
+
+.localizationMenuItem:focus {
+	box-shadow: inset 0 0 0 14px #0099CC;
+	outline: none;
+}
+
+.toolbarContainer {
+	display: flex;
+	width: 100%;
+	height: 90px;
+	background-color: #eeeeee;	
+}
+
+.toolbarTextContainer {
+	margin-left: 30px;
+}
+
+.toolbarImageContainer {
+	margin-left: auto;
+	padding-right: 10px;
+}
+
+.logoImage {
+	margin-right: 20px;
+	margin-left: auto;
+	height: 60px;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+
+.localizationAnimationFadeIn {
+	animation: localizationAnimationFadeIn 0.9s linear;
+}
+  
+@keyframes localizationAnimationFadeIn {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1
+	}
+}

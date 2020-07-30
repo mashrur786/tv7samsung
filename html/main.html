@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="html">
+	<head>
+	    <title>TV7</title>
+	    
+		<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+		
+		<script type="text/javascript" src="../util/constants.js"></script>
+		<script type="text/javascript" src="../locale/mainpagelocale.js"></script>
+	    <script type="text/javascript" src="../js/main.js"></script>
+	</head>
+	<body class="body">
+		<div class="exitModal exitModalAnimationFadeIn">
+			<div class="modalContentArea">
+				<div class="modalTextAndButtons">
+					<div id="modalQuestionText" class="modalQuestionText"></div>
+					<div class="modalButtons">
+						<div id="yesButton_1" class="okButton" tabindex="0"></div>
+						<div id="cancelButton_2" class="cancelButton" tabindex="0"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="toolbarContainer">
+			<div class="toolbarTextContainer">
+				<span id="toolbarText" class="toolbarText"></span>
+			</div>
+			<div class="toolbarImageContainer">
+				<img class="logoImage" src="../images/logo.png" alt="tv7"/>
+			</div>
+		</div>
+
+		<div class="mainView">
+			<div class="sidebar">
+				<div id="r_0_0" class="settingsIconContainer" tabindex="0" onfocusin="focusInToSettings(this)" onfocusout="focusOutFromSettings(this)">	
+					<div>
+						<object id="settingsIcon" class="settingsIcon" data="../images/settings_black.svg" type="image/svg+xml"></object>
+					</div>
+					<div id="settingsText" class="settingsText"></div>
+				</div>
+			</div>
+		
+			<div class="contentContainer mainContentAnimationFadeIn">
+				<div class="contentRow">
+					<div id="r_1_1" class="contentItem" tabindex="0">
+						<img class="contentImage" src="../images/logo_taivas.png" alt="tv7"/>
+					</div>
+					<div id="r_1_2" class="contentItem" tabindex="0">
+						<img class="contentImage" src="../images/logo_taevas.png" alt="tv7"/>
+					</div>
+				</div>
+			
+				<div class="contentRow">
+					<div id="r_2_1" class="contentItem" tabindex="0">
+						<img class="contentImage" src="../images/logo_himlen.png" alt="tv7"/>
+					</div>
+					<div id="r_2_2" class="contentItem" tabindex="0">
+						<img class="contentImage" src="../images/logo_nebesa.png" alt="tv7"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

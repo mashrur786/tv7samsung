@@ -1,0 +1,231 @@
+/*
+@import url('../fonts?family=Roboto:wght@500&display=swap');
+*/
+.html {
+	height: 100%;
+}
+
+.body {
+	font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+	background-color: white;
+	height: 100%;
+}
+
+.exitModal {
+	position: absolute;
+	background-color: black;
+	z-index: 100;
+	display: none;
+}
+
+.modalContentArea {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+}
+
+.modalTextAndButtons {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%)
+}
+
+.modalQuestionText {
+	color: #ffffff;
+	font-size: 64px;
+}
+
+.modalButtons {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+.okButton {
+	margin-right: 20px;
+}
+
+.cancelButton {
+	margin-left: 20px;
+}
+
+.okButton, .cancelButton  {
+	width: 250px;
+	height: 60px;
+	border: 5px solid #ffffff;
+	border-radius: 60px;
+	color: #ffffff;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 60px;
+	font-size: 50px;
+	outline: none;
+	cursor: pointer;
+}
+
+.okButton:focus, .cancelButton:focus {
+	background-color: #0099CC;
+	color: #ffffff;
+	border: 5px solid #0099CC;
+}
+
+.toolbarContainer {
+	display: flex;
+	width: 100%;
+	height: 90px;
+	background-color: #eeeeee;	
+}
+
+.toolbarTextContainer {
+	margin-left: 30px;
+}
+
+.toolbarImageContainer {
+	margin-left: auto;
+	padding-right: 10px;
+}
+
+.toolbarText {
+	font-size: 52px;
+	font-weight: bold;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+  	display: inline-block;
+  	color: #0099CC;
+}
+
+.logoImage {
+	margin-right: 20px;
+	margin-left: auto;
+	height: 60px;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+
+.contentContainer {
+	padding: 10px;
+	width: 100%;
+}
+
+.contentRow {
+	display: flex;
+}
+
+.contentRow:first-child {
+	margin-top: 20px;
+}
+
+.contentRow:last-child {
+	margin-top: 30px;
+	width: 100%;
+}
+
+.contentItem {
+	width: 50%;
+	background-color: #eeeeee;
+	height: 100%;
+	margin-left: 15px;
+	margin-right: 15px;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.contentItem:focus {
+    box-shadow: inset 0 0 0 14px #0099CC;
+	border-radius: 14px;
+	outline: none;
+}
+
+.contentImage {
+	width: 70%;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+
+.mainView {
+	display: flex;
+	height: calc(100% - 90px);
+}
+
+.sidebar {
+	height: 100%;
+	background-color: #eeeeee;
+}
+
+.settingsIconContainer {
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+	outline: none;
+	vertical-align: middle;
+	display: flex;
+}
+
+.settingsIconContainer div:first-child {
+	text-align: center;
+	width: 100%;
+}
+
+.settingsIconContainer:focus {
+	outline: none;
+	background-color: #0099CC;
+}
+
+.settingsIcon {
+	width: 60px;
+	height: 60px;
+	vertical-align: middle;
+}
+
+.settingsText {
+	font-size: 48px;
+	font-weight: bold;
+	margin-left: 10px;
+	margin-right: 20px;
+	color: #444444;
+	vertical-align: middle;
+	z-index: 101;
+	display: none;
+}
+
+.mainContentAnimationFadeIn {
+	animation: mainContentAnimationFadeIn 0.9s linear;
+}
+  
+@keyframes mainContentAnimationFadeIn {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1
+	}
+}
+
+.exitModalAnimationFadeIn {
+	animation: exitModalAnimationFadeIn 0.7s linear forwards;
+}
+
+@keyframes exitModalAnimationFadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.7;
+	}
+}

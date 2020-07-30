@@ -1,0 +1,35 @@
+.body {
+	margin: 0;
+	padding: 0;
+	background-color: white;
+}
+
+.contentContainer {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.loadLogo {
+	width: 280px;
+}
+
+.busyLoader {
+	border: 9px solid #f0f0f0;
+	border-radius: 50%;
+	border-top: 9px solid #0099CC;
+	width: 38px;
+	height: 42px;
+    margin: 42px auto 0 auto;
+	animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+	0% { 
+		transform: rotate(0deg); 
+	}
+	100% { 
+		transform: rotate(360deg); 
+	}
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>TV7</title>
+
+        <link rel="stylesheet" type="text/css" href="../css/video-js.7.9.2.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/player.css"/>
+        
+        <script type="text/javascript" src="../js/video-js.7.9.2.min.js"></script>
+        <script type="text/javascript" src="../util/constants.js"></script>
+		<script type="text/javascript" src="../js/player.js"></script>
+	</head>
+	<body class="body">
+        <div id="backButton" class="backButton" tabindex="0">
+            <object id="backIcon" class="backIcon" data="../images/arrow_back-black.svg" type="image/svg+xml"></object>
+        </div>
+
+        <div class="videoPlayerContainer">
+            <video id="videoPlayer" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" preload="auto" playsinline></video>
+        </div>
+
+        <div class="playPauseButtonContainer">
+            <div id="playPauseButton" class="playPauseButton" tabindex="0">
+                <object id="playPauseIcon" class="playPauseIcon" data="../images/pause_circle_black.svg" type="image/svg+xml"></object>
+            </div>
+        </div>
+
+	</body>
+</html>
