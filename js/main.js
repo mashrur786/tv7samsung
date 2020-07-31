@@ -1,5 +1,6 @@
 var locale = null;
 var modalVisible = false;
+var settingsMenuOpen = false;
 
 window.onload = function() {
 	init();
@@ -49,7 +50,8 @@ function init() {
 		if (keyCode === 37 && split) {
 			//LEFT arrow
 			if (contentId === 'r_1_1' || contentId === 'r_2_1') {
-				// Activate settings icon
+				// Activate settings menu
+				settingsMenuOpen = true;
 				newId = 'r_0_0';
 			}
 			else if (!modalVisible) {
@@ -68,7 +70,7 @@ function init() {
 		else if (keyCode === 39 && split) {
 			//RIGHT arrow
 			if (contentId === 'r_0_0') {
-				// Activate settings icon
+				// activate content item
 				newId = 'r_1_1';
 			}
 			else if (!modalVisible) {
@@ -126,7 +128,10 @@ function init() {
 		}
 		else if (keyCode === 10009 || keyCode === 27) {
 			//RETURN button
-			if (!modalVisible) {
+			if(settingsMenuOpen) {
+				activateContentElement();
+			}
+			else if (!modalVisible) {
 				showExitModal();
 			}
 			else {
@@ -163,6 +168,8 @@ function activateContentElement() {
 		if (activeId) {
 			activeId.focus();
 		}
+
+		settingsMenuOpen = false;
 	}, 100);
 }
 
