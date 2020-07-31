@@ -9,6 +9,8 @@
     top: 50%;
     left: 50%;
 	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
 }
 
 .loadLogo {
@@ -28,8 +30,12 @@
 @keyframes spinner {
 	0% { 
 		transform: rotate(0deg); 
+		-webkit-transform: rotate(0deg); 
+		-moz-transform: rotate(0deg); 
 	}
 	100% { 
-		transform: rotate(360deg); 
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg); 
+		-moz-transform: rotate(360deg); 
 	}
 }
