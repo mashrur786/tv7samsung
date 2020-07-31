@@ -108,7 +108,7 @@
 	font-weight: bold;
 	position: relative;
   	display: inline-block;
-	color: #0099CC;
+	color: #444444;
 	padding-right: 10px;
 	height: 90px;
     line-height: 90px;
@@ -237,5 +237,18 @@
 	}
 	100% {
 		opacity: 0.7;
+	}
+}
+
+.settingsMenuFadeIn {
+	animation: settingsMenuFadeIn 0.6s linear;
+}
+  
+@keyframes settingsMenuFadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }

@@ -182,12 +182,20 @@ function focusInToSettings(element) {
 		settingsText.style.display = 'block';
 		setLocalizedText('settingsText', locale, 'settingsText');
 	}
+
+	if (element) {
+		element.classList.add('settingsMenuFadeIn');
+	}
 }
 
 function focusOutFromSettings(element) {
 	var settingsText = document.getElementById('settingsText');
 	if (settingsText) {
 		settingsText.style.display = 'none';
+	}
+
+	if (element) {
+		element.classList.remove('settingsMenuFadeIn');
 	}
 }
 
