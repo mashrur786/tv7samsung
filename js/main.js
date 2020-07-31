@@ -46,7 +46,7 @@ function init() {
 			split = contentId.split('_');
 		}
 
-		if (keyCode === 37 && split) {
+		if (keyCode === LEFT && split) {
 			//LEFT arrow
 			if (contentId === 'r_1_1' || contentId === 'r_2_1') {
 				// Activate settings menu
@@ -62,13 +62,13 @@ function init() {
 				newId = split[0] + '_' + split[1] + '_' + (Number(split[2]) - 1);
 			}
 		}
-		else if (keyCode === 38 && split) {
+		else if (keyCode === UP && split) {
 			//UP arrow - activate content item
 			if (!settingsMenuOpen && !modalVisible) {
 				newId = split[0] + '_' + (Number(split[1]) - 1) + '_' + split[2];
 			}
 		}
-		else if (keyCode === 39 && split) {
+		else if (keyCode === RIGHT && split) {
 			//RIGHT arrow
 			if (contentId === 'r_0_0') {
 				// from settings menu - activate content item
@@ -84,13 +84,13 @@ function init() {
 				newId = split[0] + '_' + split[1] + '_' + (Number(split[2]) + 1);
 			}
 		}
-		else if (keyCode === 40 && split) {
+		else if (keyCode === DOWN && split) {
 			//DOWN arrow - activate content item
 			if (!settingsMenuOpen && !modalVisible) {
 				newId = split[0] + '_' + (Number(split[1]) + 1) + '_' + split[2];
 			}
 		}
-		else if (keyCode === 13) {
+		else if (keyCode === OK) {
 			//OK button
 			if (!modalVisible) {
 				var id = document.activeElement.id;
@@ -130,7 +130,7 @@ function init() {
 				}
 			}
 		}
-		else if (keyCode === 10009 || keyCode === 27) {
+		else if (keyCode === RETURN || keyCode === ESC) {
 			//RETURN button
 			if(settingsMenuOpen) {
 				settingsMenuOpen = false;

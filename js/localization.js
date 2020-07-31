@@ -30,17 +30,17 @@ function init() {
 			var split = menuId.split('_');
 
 			var newId = null;
-			if (keyCode === 38 && split) {
+			if (keyCode === UP && split) {
 				//UP arrow
 				newId = split[0] + '_' + (Number(split[1]) - 1);
 				addFocusToElement(newId);
 			}
-			else if (keyCode === 40 && split) {
+			else if (keyCode === DOWN && split) {
 				//DOWN arrow
 				newId = split[0] + '_' + (Number(split[1]) + 1);
 				addFocusToElement(newId);
 			}
-			else if (keyCode === 13 && split) {
+			else if (keyCode === OK && split) {
 				//OK button
 				var locale = null;
 
@@ -67,7 +67,7 @@ function init() {
 					toMainPage();
 				}
 			}
-			else if (keyCode === 10009 || keyCode === 27) {
+			else if (keyCode === RETURN || keyCode === 27) {
 				// RETURN button
 				var fromPage = sessionStorage.getItem('fromPage');
 				if (fromPage) {

@@ -52,7 +52,7 @@ function init() {
         var playPauseButton = getElementById('playPauseButton');
         var backButton = getElementById('backButton');
 
-        if (keyCode === 38) {
+        if (keyCode === UP) {
             //UP arrow
             if (activeElement !== 'playPauseButton' && activeElement !== 'backButton') {
                 if (playPauseButton) {
@@ -65,7 +65,7 @@ function init() {
                 }
             }
         }
-        else if (keyCode === 40) {
+        else if (keyCode === DOWN) {
 			//DOWN arrow
             if (activeElement === 'playPauseButton') {
                 if (videoPlayer) {
@@ -78,7 +78,7 @@ function init() {
                 }
             }
 		}
-        else if (keyCode === 13) {
+        else if (keyCode === OK) {
             //OK button
             if (!buttonsVisible) {
                 // Show buttons
@@ -119,7 +119,7 @@ function init() {
 
             }
         }
-        else if (keyCode === 10009) {
+        else if (keyCode === RETURN) {
             // RETURN button
             if (buttonsVisible) {
                 hideButtons();
