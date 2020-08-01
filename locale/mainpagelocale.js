@@ -1,6 +1,7 @@
-var localization = [
+var localeData = [
 	{
 		item: 'toolbarText', locales: [
+			{locale: 'en', text: 'When the content matter'},
 			{locale: 'fi', text: 'Kun sisältö ratkaisee'},
 			{locale: 'ee', text: 'Kui sisu on oluline'},
 			{locale: 'se', text: 'When the content matter'},
@@ -9,6 +10,7 @@ var localization = [
 	},
 	{
 		item: 'modalQuestionText', locales: [
+			{locale: 'en', text: 'Close TV7 application?'},
 			{locale: 'fi', text: 'Sulje TV7 sovellus?'},
 			{locale: 'ee', text: 'Close TV7 application?'},
 			{locale: 'se', text: 'Close TV7 application?'},
@@ -16,7 +18,8 @@ var localization = [
 		]
 	},
 	{
-		item: 'yesButton_1', locales: [
+		item: 'exitYesButton', locales: [
+			{locale: 'en', text: 'Yes'},
 			{locale: 'fi', text: 'Kyllä'},
 			{locale: 'ee', text: 'Yes'},
 			{locale: 'se', text: 'Yes'},
@@ -24,7 +27,8 @@ var localization = [
 		]
 	},
 	{
-		item: 'cancelButton_2', locales: [
+		item: 'exitCancelButton', locales: [
+			{locale: 'en', text: 'Cancel'},
 			{locale: 'fi', text: 'Peruuta'},
 			{locale: 'ee', text: 'Cancel'},
 			{locale: 'se', text: 'Cancel'},
@@ -33,6 +37,7 @@ var localization = [
 	},
 	{
 		item: 'settingsText', locales: [
+			{locale: 'en', text: 'Settings'},
 			{locale: 'fi', text: 'Asetukset'},
 			{locale: 'ee', text: 'Settings'},
 			{locale: 'se', text: 'Settings'},
@@ -40,31 +45,3 @@ var localization = [
 		]
 	}
 ];
-
-function setLocalizedText(item, locale, elementId) {
-	var localizedText = '';
-
-	for(var i = 0; i < localization.length; i++) {
-		var lzn = localization[i];
-		if (lzn && lzn.item === item) {
-			for(var j = 0; j < lzn.locales.length; j++) {
-				var lls = lzn.locales[j];
-
-				if (lls && lls.locale === locale) {
-					localizedText = lls.text;
-					break;
-				}
-			}
-		}
-
-		if(localizedText.length) {
-			break;
-		}
-	}
-
-	var elem = document.getElementById(elementId);
-	if (elem) {
-		elem.innerHTML = localizedText;
-	}
-}
-

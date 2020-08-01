@@ -12,10 +12,10 @@ function init() {
 	setTimeout(function() {
 		locale = localStorage.getItem(localizationKey);
 		if (!locale) {
-			locale = fi;
+			locale = en;
 		}
 
-		setLocalizedText('selectLocalizationText', locale, 'selectLocalizationText');
+		setLocalizedText('selectLocalizationText', locale, 'selectLocalizationText', localeData);
 		
 		// set default focus
 		addOpenFocusToElement();
@@ -46,7 +46,10 @@ function init() {
 
 				var id = document.activeElement.id;
 				if (id) {
-					if (id == localeFi) {
+					if (id == localeEn) {
+						locale = en;
+					}
+					else if (id == localeFi) {
 						locale = fi;
 					}
 					else if (id == localeEe) {
@@ -86,11 +89,14 @@ function init() {
 }
 
 function addOpenFocusToElement() {
-	var id = localeFi;
+	var id = localeEn;
 
 	var locale = localStorage.getItem(localizationKey);
 	if (locale) {
-		if (locale === ee) {
+		if (locale === fi) {
+			id = localeFi;
+		}
+		else if (locale === ee) {
 			id = localeEe;
 		}
 		else if (locale === se) {

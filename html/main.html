@@ -7,6 +7,7 @@
 	    
 		<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 		
+		<script type="text/javascript" src="../util/locale.js"></script>
 		<script type="text/javascript" src="../util/constants.js"></script>
 		<script type="text/javascript" src="../locale/mainpagelocale.js"></script>
 	    <script type="text/javascript" src="../js/main.js"></script>
@@ -17,8 +18,8 @@
 				<div class="modalTextAndButtons">
 					<div id="modalQuestionText" class="modalQuestionText"></div>
 					<div class="modalButtons">
-						<div id="yesButton_1" class="okButton" tabindex="0"></div>
-						<div id="cancelButton_2" class="cancelButton" tabindex="0"></div>
+						<div id="exitYesButton" class="okButton" tabindex="0"></div>
+						<div id="exitCancelButton" class="cancelButton" tabindex="0"></div>
 					</div>
 				</div>
 			</div>
@@ -34,7 +35,7 @@
 
 		<div class="mainView">
 			<div class="sidebar">
-				<div id="r_0_0" class="settingsIconContainer" tabindex="0" onfocusin="focusInToSettings(this)" onfocusout="focusOutFromSettings(this)">	
+				<div id="r_1_0" class="settingsIconContainer" tabindex="0" onfocusin="focusInToSettings(this)" onfocusout="focusOutFromSettings(this)">	
 					<div>
 						<object id="settingsIcon" class="settingsIcon" data="../images/settings_black.svg" type="image/svg+xml"></object>
 					</div>

@@ -19,7 +19,7 @@ function init() {
 
 		if (locale) {
 			// add localized toolbar text
-			setLocalizedText('toolbarText', locale, 'toolbarText');
+			setLocalizedText('toolbarText', locale, 'toolbarText', localeData);
 		}
 
 		// set content rows height
@@ -47,51 +47,57 @@ function init() {
 		}
 
 		if (keyCode === LEFT && split) {
-			//LEFT arrow
-			if (contentId === 'r_1_1' || contentId === 'r_2_1') {
-				// Activate settings menu
-				settingsMenuOpen = true;
-				newId = 'r_0_0';
+			// LEFT arrow
+			if (!modalVisible) {
+				var columnNbr = Number(split[2]) - 1;
+				if (columnNbr > 0) {
+					newId = split[0] + '_' + split[1] + '_' + columnNbr;
+				}
+				else if (columnNbr === 0) {
+					newId = 'r_1_0';
+					settingsMenuOpen = true;
+				}
 			}
-			else if (modalVisible) {
-				// exit modal yes button
-				newId = 'yesButton_' + (Number(split[1]) - 1);
-			}
-			else if (!settingsMenuOpen) {
-				// activate content item
-				newId = split[0] + '_' + split[1] + '_' + (Number(split[2]) - 1);
+			else {
+				if (contentId === 'exitCancelButton') {
+					newId = 'exitYesButton';
+				}
 			}
 		}
 		else if (keyCode === UP && split) {
-			//UP arrow - activate content item
-			if (!settingsMenuOpen && !modalVisible) {
-				newId = split[0] + '_' + (Number(split[1]) - 1) + '_' + split[2];
+			// UP arrow - activate content item
+			if (!modalVisible && !settingsMenuOpen) {
+				var rowNbr = Number(split[1]) - 1;
+				if (rowNbr > 0) {
+					newId = split[0] + '_' + rowNbr + '_' + split[2];
+				}
 			}
 		}
 		else if (keyCode === RIGHT && split) {
-			//RIGHT arrow
-			if (contentId === 'r_0_0') {
-				// from settings menu - activate content item
-				settingsMenuOpen = false;
-				newId = 'r_1_1';
-			}
-			else if (modalVisible) {
-				// exit modal cancel button
-				newId = 'cancelButton_' + (Number(split[1]) + 1);
+			// RIGHT arrow
+			if (!modalVisible) {
+				var columnNbr = Number(split[2]) + 1;
+				if (columnNbr < 3) {
+					newId = split[0] + '_' + split[1] + '_' + columnNbr;
+				}
 			}
 			else {
-				// from content item - activate content item
-				newId = split[0] + '_' + split[1] + '_' + (Number(split[2]) + 1);
+				if (contentId === 'exitYesButton') {
+					newId = 'exitCancelButton';
+				}
 			}
 		}
 		else if (keyCode === DOWN && split) {
-			//DOWN arrow - activate content item
-			if (!settingsMenuOpen && !modalVisible) {
-				newId = split[0] + '_' + (Number(split[1]) + 1) + '_' + split[2];
+			// DOWN arrow - activate content item
+			if (!modalVisible && !settingsMenuOpen) {
+				var rowNbr = Number(split[1]) + 1;
+				if (rowNbr < 3) {
+					newId = split[0] + '_' + rowNbr + '_' + split[2];
+				}
 			}
 		}
 		else if (keyCode === OK) {
-			//OK button
+			// OK button
 			if (!modalVisible) {
 				var id = document.activeElement.id;
 
@@ -100,7 +106,7 @@ function init() {
 					return;
 				}
 
-				if (id === 'r_0_0') {
+				if (id === 'r_1_0') {
 					// open settings page - localization
 					sessionStorage.setItem(fromPage, 'mainPage');
 					window.open(localizationPage, _self);
@@ -118,20 +124,20 @@ function init() {
 			else {
 				hideExitModal();
 
-				if (document.activeElement.id === 'yesButton_1') {
+				if (document.activeElement.id === 'exitYesButton') {
 					// exit from application
 					if (tizen) {
 						tizen.application.getCurrentApplication().exit();
 					}
 				}
-				else if (document.activeElement.id === 'cancelButton_2') {
+				else if (document.activeElement.id === 'exitCancelButton') {
 					// cancel => to main view
 					activateContentElement();
 				}
 			}
 		}
 		else if (keyCode === RETURN || keyCode === ESC) {
-			//RETURN button
+			// RETURN button
 			if(settingsMenuOpen) {
 				settingsMenuOpen = false;
 				activateContentElement();
@@ -139,7 +145,7 @@ function init() {
 			else if (!modalVisible) {
 				showExitModal();
 			}
-			else {
+			else if (modalVisible) {
 				// to main view
 				hideExitModal();
 				activateContentElement();
@@ -165,7 +171,7 @@ function init() {
 function activateContentElement() {
 	setTimeout(function() {
 		var activeId = sessionStorage.getItem('mainActiveId');
-		if (!activeId || activeId === 'r_0_0') {
+		if (!activeId || activeId === 'r_1_0') {
 			activeId = 'r_1_1';
 		}
 
@@ -180,7 +186,7 @@ function focusInToSettings(element) {
 	var settingsText = document.getElementById('settingsText');
 	if (settingsText) {
 		settingsText.style.display = 'block';
-		setLocalizedText('settingsText', locale, 'settingsText');
+		setLocalizedText('settingsText', locale, 'settingsText', localeData);
 	}
 
 	if (element) {
@@ -246,9 +252,9 @@ function showExitModal() {
 
 		if (locale) {
 			// add localized texts to exit modal
-			setLocalizedText('modalQuestionText', locale, 'modalQuestionText');
-			setLocalizedText('yesButton_1', locale, 'yesButton_1');
-			setLocalizedText('cancelButton_2', locale, 'cancelButton_2');
+			setLocalizedText('modalQuestionText', locale, 'modalQuestionText', localeData);
+			setLocalizedText('exitYesButton', locale, 'exitYesButton', localeData);
+			setLocalizedText('exitCancelButton', locale, 'exitCancelButton', localeData);
 		}
 
 		var okButton = getElementByClass('okButton');

@@ -2,6 +2,8 @@
 
 ###################################################################
 # Shell script to build and run application on emulator or on TV. #
+#                                                                 #
+# Usage: ./run.sh emulator | tv                                   #
 ###################################################################
 
 PROJECT_DIR=${TIZEN_ROOT_DIR}'/project'
@@ -10,11 +12,26 @@ BUILD_DIR='build'
 OUTPUT_DIR='output'
 EMULATOR_EXE=~/tizen-studio/tools/emulator/bin/em-cli
 TIZEN_EXE=~/tizen-studio/tools/ide/bin/tizen
+EMULATOR='emulator'
+TV='tv'
+DEVICE_EMULATOR_='T-samsung-5.5-x86'
+DEVICE_TV='UE43RU7475UXXC'
 DEVICE_NAME='T-samsung-5.5-x86'
-#DEVICE_NAME='UE43RU7475UXXC'
 APP_ID='TkLO29RkmC.TV7'
 BUILT_APP_NAME='TV7.wgt'
 EXCLUDE_FROM_BUILD='run.sh build.sh misc/* .gitignore README.md LICENSE.md'
+
+echo 'Usage: ./run emulator | tv'
+if [ $1 == ${TV} ]
+then
+    DEVICE_NAME=${DEVICE_TV}
+    echo 'Run on TV'
+else
+    DEVICE_NAME=${DEVICE_EMULATOR_}
+    echo 'Run on emulator'
+fi
+
+echo 'Device name: ' ${DEVICE_NAME}
 
 rm -rf ${BUILD_DIR} ${OUTPUT_DIR} ${BUILT_APP_NAME}
 
