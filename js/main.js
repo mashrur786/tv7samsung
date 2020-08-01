@@ -31,160 +31,169 @@ function init() {
 		}
 
 		activateContentElement();
-	}, 0);
 
-	// add eventListener for keydown
-	document.addEventListener('keydown', function(e) {
-		var keyCode = e.keyCode;
-		var contentId = e.target.id;
-		var newId = null;
+		// add eventListener for keydown
+		document.addEventListener('keydown', function(e) {
+			var keyCode = e.keyCode;
+			var contentId = e.target.id;
+			var newId = null;
 
-		console.log('Key code : ', keyCode);
+			console.log('Key code : ', keyCode);
 
-		var split = null;
-		if (contentId) {
-			split = contentId.split('_');
-		}
-
-		if (keyCode === LEFT && split) {
-			// LEFT arrow
-			if (!modalVisible) {
-				var columnNbr = Number(split[2]) - 1;
-				if (columnNbr > 0) {
-					newId = split[0] + '_' + split[1] + '_' + columnNbr;
-				}
-				else if (columnNbr === 0) {
-					newId = 'r_1_0';
-					settingsMenuOpen = true;
-				}
+			var split = null;
+			if (contentId) {
+				split = contentId.split('_');
 			}
-			else {
-				if (contentId === 'exitCancelButton') {
-					newId = 'exitYesButton';
-				}
-			}
-		}
-		else if (keyCode === UP && split) {
-			// UP arrow - activate content item
-			if (!modalVisible && !settingsMenuOpen) {
-				var rowNbr = Number(split[1]) - 1;
-				if (rowNbr > 0) {
-					newId = split[0] + '_' + rowNbr + '_' + split[2];
-				}
-			}
-		}
-		else if (keyCode === RIGHT && split) {
-			// RIGHT arrow
-			if (!modalVisible) {
-				var columnNbr = Number(split[2]) + 1;
-				if (columnNbr < 3) {
-					newId = split[0] + '_' + split[1] + '_' + columnNbr;
-				}
 
-				settingsMenuOpen = false;
-			}
-			else {
-				if (contentId === 'exitYesButton') {
-					newId = 'exitCancelButton';
-				}
-			}
-		}
-		else if (keyCode === DOWN && split) {
-			// DOWN arrow - activate content item
-			if (!modalVisible && !settingsMenuOpen) {
-				var rowNbr = Number(split[1]) + 1;
-				if (rowNbr < 3) {
-					newId = split[0] + '_' + rowNbr + '_' + split[2];
-				}
-			}
-		}
-		else if (keyCode === OK) {
-			// OK button
-			if (!modalVisible) {
-				var id = document.activeElement.id;
-
-				if (!id) {
-					activateContentElement();
-					return;
-				}
-
-				if (id === 'r_1_0') {
-					// open settings page - localization
-					sessionStorage.setItem(fromPage, 'mainPage');
-					window.open(localizationPage, _self);
-				}
-				else {
-					// open video page
-					var value = getUrlAndTypeById(id);
-
-					sessionStorage.setItem('urlToPlay', value.url);
-					sessionStorage.setItem('urlType', value.type);
-	
-					window.open(playerPage, _self);
-				}
-			}
-			else {
-				hideExitModal();
-
-				if (document.activeElement.id === 'exitYesButton') {
-					// exit from application
-					if (tizen) {
-						tizen.application.getCurrentApplication().exit();
+			if (keyCode === LEFT && split) {
+				// LEFT arrow
+				if (!modalVisible) {
+					var columnNbr = Number(split[2]) - 1;
+					if (columnNbr > 0) {
+						newId = split[0] + '_' + split[1] + '_' + columnNbr;
+					}
+					else if (columnNbr === 0) {
+						newId = settingsMenuId;
+						settingsMenuOpen = true;
 					}
 				}
-				else if (document.activeElement.id === 'exitCancelButton') {
-					// cancel => to main view
+				else {
+					if (contentId === exitCancelButton) {
+						newId = exitYesButton;
+					}
+				}
+			}
+			else if (keyCode === UP && split) {
+				// UP arrow - activate content item
+				if (!modalVisible && !settingsMenuOpen) {
+					var rowNbr = Number(split[1]) - 1;
+					if (rowNbr > 0) {
+						newId = split[0] + '_' + rowNbr + '_' + split[2];
+					}
+				}
+			}
+			else if (keyCode === RIGHT && split) {
+				// RIGHT arrow
+				if (!modalVisible) {
+					var columnNbr = Number(split[2]) + 1;
+					if (columnNbr < 3) {
+						newId = split[0] + '_' + split[1] + '_' + columnNbr;
+					}
+
+					if (settingsMenuOpen) {
+						newId = null;
+						settingsMenuOpen = false;
+						activateContentElement();
+					}
+				}
+				else {
+					if (contentId === exitYesButton) {
+						newId = exitCancelButton;
+					}
+				}
+			}
+			else if (keyCode === DOWN && split) {
+				// DOWN arrow - activate content item
+				if (!modalVisible && !settingsMenuOpen) {
+					var rowNbr = Number(split[1]) + 1;
+					if (rowNbr < 3) {
+						newId = split[0] + '_' + rowNbr + '_' + split[2];
+					}
+				}
+			}
+			else if (keyCode === OK) {
+				// OK button
+				if (!modalVisible) {
+					var id = document.activeElement.id;
+
+					if (!id) {
+						activateContentElement();
+						return;
+					}
+
+					if (id === settingsMenuId) {
+						// open settings page - localization
+						sessionStorage.setItem(fromPage, 'mainPage');
+						window.open(localizationPage, _self);
+					}
+					else {
+						// open video page
+						var value = getUrlAndTypeById(id);
+
+						sessionStorage.setItem('urlToPlay', value.url);
+						sessionStorage.setItem('urlType', value.type);
+		
+						window.open(playerPage, _self);
+					}
+				}
+				else {
+					hideExitModal();
+
+					if (document.activeElement.id === exitYesButton) {
+						// yes => exit from application
+						if (tizen) {
+							tizen.application.getCurrentApplication().exit();
+						}
+					}
+					else if (document.activeElement.id === exitCancelButton) {
+						// cancel => to main view
+						activateContentElement();
+					}
+				}
+			}
+			else if (keyCode === RETURN || keyCode === ESC) {
+				// RETURN button
+				if(settingsMenuOpen) {
+					settingsMenuOpen = false;
+					activateContentElement();
+				}
+				else if (!modalVisible) {
+					showExitModal();
+				}
+				else if (modalVisible) {
+					// to main view
+					hideExitModal();
 					activateContentElement();
 				}
 			}
-		}
-		else if (keyCode === RETURN || keyCode === ESC) {
-			// RETURN button
-			if(settingsMenuOpen) {
-				settingsMenuOpen = false;
-				activateContentElement();
-			}
-			else if (!modalVisible) {
-				showExitModal();
-			}
-			else if (modalVisible) {
-				// to main view
-				hideExitModal();
-				activateContentElement();
-			}
+			
+			// try to set focus to element by new element id
+			focusToNewElement(newId);
+		});
+	}, 0);
+}
+
+function focusToNewElement(newId) {
+	console.log('newId: ', newId);
+
+	if (newId) {
+		// Set focus to element
+		var elem = getElementById(newId);
+		if (elem) {
+			elem.focus();
 		}
 
-		// Set focus to content element
-		console.log('newId: ', newId);
-		if (newId) {
-			var elem = getElementById(newId);
-			if (elem) {
-				elem.focus();
-			}
-
-			if (newId.startsWith('r_')) {
-				// save only content element id
-				sessionStorage.setItem('mainActiveId', newId);
-			}
+		if (!modalVisible && !settingsMenuOpen) {
+			// save only content element id
+			sessionStorage.setItem(mainActiveElementId, newId);
 		}
-	});
+	}
 }
 
 function activateContentElement() {
-	setTimeout(function() {
-		var activeId = sessionStorage.getItem('mainActiveId');
-		if (!activeId || activeId === 'r_1_0') {
-			activeId = 'r_1_1';
-		}
+	// read element id from session storage
+	var activeElemId = sessionStorage.getItem(mainActiveElementId);
+	if (!activeElemId || activeElemId === settingsMenuId) {
+		activeElemId = taivasContentId;
+	}
 
-		activeId = getElementById(activeId);
-		if (activeId) {
-			activeId.focus();
-		}
-	}, 100);
+	activeElemId = getElementById(activeElemId);
+	if (activeElemId) {
+		activeElemId.focus();
+	}
 }
 
-function focusInToSettings(element) {
+function focusInToSettingsEvent(element) {
 	var settingsText = document.getElementById('settingsText');
 	if (settingsText) {
 		settingsText.style.display = 'block';
@@ -196,7 +205,7 @@ function focusInToSettings(element) {
 	}
 }
 
-function focusOutFromSettings(element) {
+function focusOutFromSettingsEvent(element) {
 	var settingsText = document.getElementById('settingsText');
 	if (settingsText) {
 		settingsText.style.display = 'none';
@@ -273,4 +282,3 @@ function hideExitModal() {
 		modalVisible = false;
 	}
 }
-

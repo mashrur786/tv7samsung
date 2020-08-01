@@ -18,7 +18,7 @@ function init() {
 		setLocalizedText('selectLocalizationText', locale, 'selectLocalizationText', localeData);
 		
 		// set default focus
-		addOpenFocusToElement();
+		addPageLoadFocus();
 
 		document.addEventListener('keydown', function(e) {
 			var keyCode = e.keyCode;
@@ -31,17 +31,17 @@ function init() {
 
 			var newId = null;
 			if (keyCode === UP && split) {
-				//UP arrow
+				// UP arrow
 				newId = split[0] + '_' + (Number(split[1]) - 1);
 				addFocusToElement(newId);
 			}
 			else if (keyCode === DOWN && split) {
-				//DOWN arrow
+				// DOWN arrow
 				newId = split[0] + '_' + (Number(split[1]) + 1);
 				addFocusToElement(newId);
 			}
 			else if (keyCode === OK && split) {
-				//OK button
+				// OK button
 				var locale = null;
 
 				var id = document.activeElement.id;
@@ -70,7 +70,7 @@ function init() {
 					toMainPage();
 				}
 			}
-			else if (keyCode === RETURN || keyCode === 27) {
+			else if (keyCode === RETURN || keyCode === ESC) {
 				// RETURN button
 				var fromPage = sessionStorage.getItem('fromPage');
 				if (fromPage) {
@@ -88,7 +88,7 @@ function init() {
 	}, 0);
 }
 
-function addOpenFocusToElement() {
+function addPageLoadFocus() {
 	var id = localeEn;
 
 	var locale = localStorage.getItem(localizationKey);
@@ -111,9 +111,9 @@ function addOpenFocusToElement() {
 }
 
 function addFocusToElement(id) {
-	var element = document.getElementById(id);
-	if(element) {
-		element.focus();
+	var elem = document.getElementById(id);
+	if(elem) {
+		elem.focus();
 	}
 }
 
