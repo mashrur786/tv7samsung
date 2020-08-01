@@ -80,6 +80,8 @@ function init() {
 				if (columnNbr < 3) {
 					newId = split[0] + '_' + split[1] + '_' + columnNbr;
 				}
+
+				settingsMenuOpen = false;
 			}
 			else {
 				if (contentId === 'exitYesButton') {

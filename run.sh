@@ -21,7 +21,7 @@ APP_ID='TkLO29RkmC.TV7'
 BUILT_APP_NAME='TV7.wgt'
 EXCLUDE_FROM_BUILD='run.sh build.sh misc/* .gitignore README.md LICENSE.md'
 
-echo 'Usage: ./run emulator | tv'
+echo 'Usage: ./run.sh emulator | tv'
 if [ $1 == ${TV} ]
 then
     DEVICE_NAME=${DEVICE_TV}
