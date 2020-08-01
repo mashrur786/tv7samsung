@@ -8,6 +8,11 @@
 
 ## Instructions
 
+### Other platforms (LG and Android)
+This application is also implemented to __LG__ and __Android__ smart TV platforms:
+  - Repository of LG application is [here](https://github.com/heaven-dev/tv7lg).
+  - Repository of Android application is [here](https://github.com/heaven-dev/tv7android).
+
 ### Download and install git
   - If your computer OS is windows you can download the git from [here](https://git-scm.com/download/win).
   - If your computer OS is linux (Ubuntu) you can install git using package manager.
