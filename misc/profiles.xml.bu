@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<profiles active="MyProfile" version="3.1">
-<profile name="MyProfile">
-<profileitem ca="" distributor="0" key="/home/kekeh/tizen-studio-data/keystore/author/keesa789cert.p12" password="1234" rootca=""/>
-<profileitem ca="/home/kekeh/tizen-studio/tools/certificate-generator/certificates/distributor/tizen-distributor-ca.cer" distributor="1" key="/home/kekeh/tizen-studio/tools/certificate-generator/certificates/distributor/tizen-distributor-signer.p12" password="tizenpkcs12passfordsigner" rootca=""/>
-<profileitem ca="" distributor="2" key="" password="" rootca=""/>
-</profile>
-</profiles>
