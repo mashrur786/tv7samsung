@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/TV7" version="0.2.1" viewmodes="fullscreen">
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="https://www.tv7.fi" version="1.0.0" viewmodes="fullscreen">
     <tizen:allow-navigation>*.tv7.fi</tizen:allow-navigation>
-    <tizen:application id="TkLO29RkmC.TV7" package="TkLO29RkmC" required_version="2.3"/>
+    <tizen:application id="TkLO29RkmC.TV7" package="TkLO29RkmC" required_version="3.0"/>
     <content src="index.html"/>
     <tizen:content-security-policy>default-src 'self'; connect-src * data: blob: filesystem:; style-src 'self' data:; script-src 'self' data:; img-src 'self' data:; frame-src 'self' data:; font-src 'self' data:; object-src 'self' data:; media-src * 'self' data: blob: filesystem:;</tizen:content-security-policy>
     <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
-    <icon src="tv7icon.png"/>
+    <icon src="tv7icon_117x117.png"/>
     <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
     <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
     <tizen:metadata key="http://samsung.com/tv/metadata/auto.update" value="true"/>
