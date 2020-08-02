@@ -13,18 +13,22 @@ function init() {
 
     setTimeout(function() {
         videoPlayer = getElementById('videoPlayer');
-        videoPlayer.appendChild(createSourceWithUrl(url));
 
         var options = {
+            preload: 'auto',
             autoplay: true,
             muted: false,
             fluid: true
         };
 
         player = videojs('videoPlayer', options, function onPlayerReady() {
-            videojs.log('Player is ready!');
+            player.src({type: streamType, src: url});
 
-            this.play();
+            player.ready(function() {
+                videojs.log('Player is ready!');
+
+                this.play();
+            });
 
             this.on('ended', function() {
                 videojs.log('Video end!');
@@ -39,7 +43,7 @@ function init() {
             });
 
             this.on('error', function() {
-                videojs.log('ERROR LOADING VIDEO!');
+                videojs.log('Error loading video!');
             });
         });
     }, 0);
@@ -119,7 +123,7 @@ function init() {
 
             }
         }
-        else if (keyCode === RETURN) {
+        else if (keyCode === RETURN || keyCode === ESC) {
             // RETURN button
             if (buttonsVisible) {
                 hideButtons();
@@ -137,13 +141,6 @@ function getUrl() {
 
 function getType() {
     return sessionStorage.getItem('urlType');
-}
-
-function createSourceWithUrl(url) {
-    var source = document.createElement('source');
-    source.setAttribute('src', url);
-    source.setAttribute('type', 'application/x-mpegURL');
-    return source;
 }
 
 function exitFromPlayer() {
