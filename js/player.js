@@ -18,7 +18,15 @@ function init() {
             preload: 'auto',
             autoplay: true,
             muted: false,
-            fluid: true
+            fluid: true,
+            html5: {
+                hls: {
+                  overrideNative: true
+                },
+                nativeAudioTracks: false,
+                nativeVideoTracks: false
+            },
+            bandwidth: 80000000
         };
 
         player = videojs('videoPlayer', options, function onPlayerReady() {
