@@ -20,4 +20,4 @@ rm -rf ${PROFILE_DIR}/profiles.xml
 cp misc/profiles.xml.bu ${PROFILE_DIR}/profiles.xml
 
 ${TIZEN_EXE} build-web -e ${EXCLUDE_FROM_BUILD} -- ./ -out ${BUILD_DIR}
-${TIZEN_EXE} package -t wgt -s MyProfile -- ${BUILD_DIR} -o ${OUTPUT_DIR}
+${TIZEN_EXE} package -t wgt -- ${BUILD_DIR} -o ${OUTPUT_DIR}

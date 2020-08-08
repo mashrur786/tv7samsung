@@ -68,16 +68,9 @@ Clone this repository to your computer disk.
   - Be sure that your computer firewall isn't blocking the connection between the computer and the TV.
 
 ### Notes
-  - Application have two separate video player. One is HTML5 (video.js) and other is Samsung AvPlayer. Both player are working. You can select which player to use from the __main.js__ file (line 5).
-  - There is also shell script (run.sh) which do all necessary things to run app on emulator or on TV. The script run app only in __release__ mode. 
-    - If you are using the __run.sh__ script you have to change paths to the __profiles.xml.bu__ file.
-    - You have also run two commands from the __cert.txt__ file.
-      - Generate an author certificate.
-      - Add new security profile.
-      - Change value of parameters suits your needs.
-    - Depending are you running app on emulator or on TV you have to change the value of __DEVICE_NAME__ from the __run.sh__ file. 
-    - You can find the value of __DEVICE_NAME__ from the __Tools -> Device Manager__ menu of the IDE after the device is connected.
-    - Probably the device name of emulator is __T-samsung-5.5-x86__, but you have to check the device name of TV after __Computer -> TV__ connection success.
+  - There are __build__ and __run__ shell scripts in the root folder of this project.
+    - __build.sh__: builds the application and the __TV7.wgt__ file is created in the __output__ folder.
+    - __run.sh emulator|tv__: builds the application and runs it on emulator or TV.
 
 ### Useful links
   - [Command Line Interface (CLI) Commands](https://developer.tizen.org/development/tizen-studio/web-tools/cli)

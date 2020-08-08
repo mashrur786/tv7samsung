@@ -40,7 +40,7 @@ cp misc/profiles.xml.bu ${PROFILE_DIR}/profiles.xml
 
 ${EMULATOR_EXE} launch --name ${DEVICE_NAME}
 ${TIZEN_EXE} build-web -e ${EXCLUDE_FROM_BUILD} -- ./ -out ${BUILD_DIR}
-${TIZEN_EXE} package -t wgt -s MyProfile -- ${BUILD_DIR} -o ${OUTPUT_DIR}
+${TIZEN_EXE} package -t wgt -s -- ${BUILD_DIR} -o ${OUTPUT_DIR}
 
 ${TIZEN_EXE} uninstall -p ${APP_ID} -t ${DEVICE_NAME}
 ${TIZEN_EXE} install -- ${OUTPUT_DIR} -n TV7.wgt -t ${DEVICE_NAME}
